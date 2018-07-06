@@ -11,18 +11,22 @@ import android.support.v7.app.AppCompatActivity;
 
 public class about extends AppCompatActivity {
 
-private Button button;
+private Switch mSwitch;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about);
-        button=(TextView)findViewById(R.id.btn);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               //Add your operation here.......
-            }
-        });
+           mSwitch = (Switch) findViewById(R.id.myswitch);
+        mSwitch.setOnCheckedChangeListener(this);
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (isChecked) {
+            Toast.makeText(this, "ON", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "OFF", Toast.LENGTH_SHORT).show();
+        }
     }
 }
